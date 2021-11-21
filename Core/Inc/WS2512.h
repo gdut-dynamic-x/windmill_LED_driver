@@ -68,8 +68,11 @@
 #define BOT_SIZE 30
 #define MID_SIZE 256
 
-#define ON 1
 #define OFF 0
+#define ON 1
+#define ARROW 2
+#define HALT 3
+
 
 typedef struct{
     uint16_t top1;
@@ -86,7 +89,10 @@ void init_WS2512(void);
 void setRGB(uint32_t rgb);
 void setLED_State(uint8_t LED_type,uint8_t state);
 void setMidArrow(uint8_t LED_type,uint8_t state);
+uint8_t setLED(uint8_t LED_type,uint8_t state);
 //desData length = 24*length
 void transferToLED(const uint8_t *data,uint16_t length,uint8_t* dstData);
+
+void LED_FSM(void);
 
 #endif //BOARD_B_CORE_INC_WS2512_H_

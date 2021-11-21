@@ -308,6 +308,7 @@ CMakeFiles/Board_B.elf.dir/Core/Src/tim.c.obj
  D:/DynamicX/Code/Board_B/Core/Src/tim.c
 CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj
  ../Core/Inc/main.h
+ ../Core/Inc/queue.h
  ../Core/Inc/stm32f1xx_hal_conf.h
  ../Core/Inc/usart.h
  ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h

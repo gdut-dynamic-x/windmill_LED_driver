@@ -10,9 +10,23 @@
 main.h
 ../Core/Inc/main.h
 
+../Core/Inc/dma.h
+main.h
+../Core/Inc/main.h
+
+../Core/Inc/gpio.h
+main.h
+../Core/Inc/main.h
+
 ../Core/Inc/main.h
 stm32f1xx_hal.h
 ../Core/Inc/stm32f1xx_hal.h
+
+../Core/Inc/queue.h
+main.h
+../Core/Inc/main.h
+memory.h
+../Core/Inc/memory.h
 
 ../Core/Inc/stm32f1xx_hal_conf.h
 stm32f1xx_hal_rcc.h
@@ -83,6 +97,10 @@ stm32f1xx_hal_mmc.h
 ../Core/Inc/stm32f1xx_hal_mmc.h
 
 ../Core/Inc/tim.h
+main.h
+../Core/Inc/main.h
+
+../Core/Inc/usart.h
 main.h
 ../Core/Inc/main.h
 
@@ -252,11 +270,19 @@ stm32f1xx_hal_def.h
 stm32f1xx_hal_def.h
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 
-D:/DynamicX/Code/Board_B/Core/Src/tim.c
+D:/DynamicX/Code/Board_B/Core/Src/main.c
+main.h
+D:/DynamicX/Code/Board_B/Core/Src/main.h
+dma.h
+D:/DynamicX/Code/Board_B/Core/Src/dma.h
 tim.h
 D:/DynamicX/Code/Board_B/Core/Src/tim.h
+usart.h
+D:/DynamicX/Code/Board_B/Core/Src/usart.h
+gpio.h
+D:/DynamicX/Code/Board_B/Core/Src/gpio.h
+queue.h
+D:/DynamicX/Code/Board_B/Core/Src/queue.h
 WS2512.h
 D:/DynamicX/Code/Board_B/Core/Src/WS2512.h
-memory.h
-D:/DynamicX/Code/Board_B/Core/Src/memory.h
 

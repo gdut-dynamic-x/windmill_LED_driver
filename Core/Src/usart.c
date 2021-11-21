@@ -21,9 +21,13 @@
 #include "usart.h"
 
 /* USER CODE BEGIN 0 */
-uint8_t rx_data;
+#include "queue.h"
+static uint8_t rx_data;
+extern QueueHandle_t data_queue;
+
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
+  addQueue(data_queue,&rx_data);
   HAL_UART_Receive_IT(&huart1,&rx_data,1);
 }
 /* USER CODE END 0 */

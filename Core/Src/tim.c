@@ -28,6 +28,9 @@ extern LED_StateStructure LED_State;
 extern uint8_t arrows[4608];
 extern uint8_t *mid1_arrow;
 extern uint8_t *mid2_arrow;
+extern uint8_t mid1_LED[24];
+extern uint8_t mid2_LED[24];
+extern uint8_t LED_off[24];
 
 void HAL_TIM_PWM_PulseFinishedCallback(TIM_HandleTypeDef *htim)
 {
@@ -74,24 +77,27 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   //use swap chain to draw water arrow
   if(htim->Instance == TIM4){
-    if(LED_State.mid1_arrow){
-      static uint8_t *temp_data = arrows+1152;
-      uint8_t *t = mid1_arrow;
-      mid1_arrow = temp_data;
-      temp_data = t;
-      memcpy(mid1_arrow+192,temp_data,960);
-      memcpy(mid1_arrow,temp_data+960,192);
-      LED_State.mid1 = 8;
-      HAL_TIM_PWM_Start_DMA(&TIM_MID1,CHANNEL_MID1,(uint32_t*)mid1_arrow,1152);
-    }else if(LED_State.mid2_arrow){
-      static uint8_t *temp_data = arrows+3456;
-      uint8_t *t = mid2_arrow;
-      mid2_arrow = temp_data;
-      temp_data = t;
-      memcpy(mid2_arrow+192,temp_data,960);
-      memcpy(mid2_arrow,temp_data+960,192);
-      LED_State.mid2 = 8;
-      HAL_TIM_PWM_Start_DMA(&TIM_MID2,CHANNEL_MID2,(uint32_t*)mid2_arrow,1152);
+    if(LED_State.mid1_arrow||LED_State.mid2_arrow){
+      if(LED_State.mid1_arrow){
+        static uint8_t *temp_data = arrows+1152;
+        uint8_t *t = mid1_arrow;
+        mid1_arrow = temp_data;
+        temp_data = t;
+        memcpy(mid1_arrow+192,temp_data,960);
+        memcpy(mid1_arrow,temp_data+960,192);
+        LED_State.mid1 = 8;
+        HAL_TIM_PWM_Start_DMA(&TIM_MID1,CHANNEL_MID1,(uint32_t*)mid1_arrow,1152);
+      }
+      if(LED_State.mid2_arrow){
+        static uint8_t *temp_data = arrows+3456;
+        uint8_t *t = mid2_arrow;
+        mid2_arrow = temp_data;
+        temp_data = t;
+        memcpy(mid2_arrow+192,temp_data,960);
+        memcpy(mid2_arrow,temp_data+960,192);
+        LED_State.mid2 = 8;
+        HAL_TIM_PWM_Start_DMA(&TIM_MID2,CHANNEL_MID2,(uint32_t*)mid2_arrow,1152);
+      }
     }else{
       HAL_TIM_Base_Stop_IT(&htim4);
     }

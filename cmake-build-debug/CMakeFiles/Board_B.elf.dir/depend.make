@@ -307,6 +307,7 @@ CMakeFiles/Board_B.elf.dir/Core/Src/tim.c.obj: ../Drivers/STM32F1xx_HAL_Driver/I
 CMakeFiles/Board_B.elf.dir/Core/Src/tim.c.obj: ../Core/Src/tim.c
 
 CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj: ../Core/Inc/main.h
+CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj: ../Core/Inc/queue.h
 CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj: ../Core/Inc/stm32f1xx_hal_conf.h
 CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj: ../Core/Inc/usart.h
 CMakeFiles/Board_B.elf.dir/Core/Src/usart.c.obj: ../Drivers/CMSIS/Device/ST/STM32F1xx/Include/stm32f103xb.h
