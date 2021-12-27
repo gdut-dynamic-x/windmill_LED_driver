@@ -270,6 +270,12 @@ stm32f1xx_hal_def.h
 stm32f1xx_hal_def.h
 ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_def.h
 
+D:/DynamicX/Code/Board_B/Core/Src/WS2512.c
+WS2512.h
+D:/DynamicX/Code/Board_B/Core/Src/WS2512.h
+queue.h
+D:/DynamicX/Code/Board_B/Core/Src/queue.h
+
 D:/DynamicX/Code/Board_B/Core/Src/main.c
 main.h
 D:/DynamicX/Code/Board_B/Core/Src/main.h
@@ -281,6 +287,22 @@ usart.h
 D:/DynamicX/Code/Board_B/Core/Src/usart.h
 gpio.h
 D:/DynamicX/Code/Board_B/Core/Src/gpio.h
+queue.h
+D:/DynamicX/Code/Board_B/Core/Src/queue.h
+WS2512.h
+D:/DynamicX/Code/Board_B/Core/Src/WS2512.h
+
+D:/DynamicX/Code/Board_B/Core/Src/tim.c
+tim.h
+D:/DynamicX/Code/Board_B/Core/Src/tim.h
+WS2512.h
+D:/DynamicX/Code/Board_B/Core/Src/WS2512.h
+memory.h
+D:/DynamicX/Code/Board_B/Core/Src/memory.h
+
+D:/DynamicX/Code/Board_B/Core/Src/usart.c
+usart.h
+D:/DynamicX/Code/Board_B/Core/Src/usart.h
 queue.h
 D:/DynamicX/Code/Board_B/Core/Src/queue.h
 WS2512.h
