@@ -9,8 +9,8 @@
 #define ZERO 21
 #define ONE 52
 
-#define RED (50<<8)
-#define BLUE 50
+#define RED (30<<8)
+#define BLUE 30
 
 #define OFF_ID 0
 #define ON_ID 1
@@ -66,8 +66,8 @@
 #define MID2 6
 
 #define TOP_SIZE 52
-#define BOT_SIZE 47
-#define MID_SIZE 256
+#define BOT_SIZE 64
+#define MID_SIZE 320
 
 #define OFF 0
 #define ON 1
