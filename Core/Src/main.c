@@ -99,34 +99,24 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   init_WS2512();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  HAL_Delay(1000);
+  uint8_t order = NO1|MID_ARROW;
+  addQueue(data_queue,&order);
+
   while (1)
   {
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    static uint8_t counter = 3;
-    counter--;
-    if(counter==0){
-      uint8_t order;
-      order = NO1|MID_ARROW;
-      addQueue(data_queue,&order);
-      order = NO1|MID_ON;
-      addQueue(data_queue,&order);
-      order = NO1|MID_OFF;
-      addQueue(data_queue,&order);
-      counter = 3;
-    }
+//    uint8_t order = NO1|ALL_ON;
+//    addQueue(data_queue,&order);
     LED_FSM();
-    HAL_Delay(1000);
-//    setMidArrow(MID1,ON);
-//    HAL_Delay(500);
-//    setMidArrow(MID1,OFF);
-//    setLED_State(MID1,OFF);
-//    HAL_Delay(500);
+    HAL_Delay(1);
   }
   /* USER CODE END 3 */
 }

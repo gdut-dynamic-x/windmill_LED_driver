@@ -76,23 +76,23 @@ void setLED_State(uint8_t LED_type,uint8_t state)
 {
   switch (LED_type) {
     case TOP1:
-      while(LED_State.top1);
+      while(LED_State.top1||LED_State.top2);
       HAL_TIM_PWM_Start_DMA(&TIM_TOP1,CHANNEL_TOP1,(uint32_t*)(state==ON?top1_LED:LED_off),24);
       LED_State.top1 = TOP_SIZE;break;
     case TOP2:
-      while(LED_State.top2);
+      while(LED_State.top2||LED_State.top1);
       HAL_TIM_PWM_Start_DMA(&TIM_TOP2,CHANNEL_TOP2,(uint32_t*)(state==ON?top2_LED:LED_off),24);
       LED_State.top2 = TOP_SIZE;break;
     case MID1:
-      while(LED_State.mid1);
+      while(LED_State.mid1||LED_State.mid2||LED_State.bot1);
       HAL_TIM_PWM_Start_DMA(&TIM_MID1,CHANNEL_MID1,(uint32_t*)(state==ON?mid1_LED:LED_off),24);
       LED_State.mid1 = MID_SIZE;break;
     case MID2:
-      while(LED_State.mid2);
+      while(LED_State.mid1||LED_State.mid2||LED_State.bot1);
       HAL_TIM_PWM_Start_DMA(&TIM_MID2,CHANNEL_MID2,(uint32_t*)(state==ON?mid2_LED:LED_off),24);
       LED_State.mid2 = MID_SIZE;break;
     case  BOT1:
-      while(LED_State.bot1);
+      while(LED_State.mid1||LED_State.mid2||LED_State.bot1);
       HAL_TIM_PWM_Start_DMA(&TIM_BOT1,CHANNEL_BOT1,(uint32_t*)(state==ON?bot1_LED:LED_off),24);
       LED_State.bot1 = BOT_SIZE;break;
     case BOT2:
@@ -166,12 +166,14 @@ void LED_FSM(void)
     if((data&1)==NO1){
       switch (data&0xFE) {
         case ALL_ON:
+          setMidArrow(MID1,OFF);
           setLED_State(TOP1,ON);
           setLED_State(MID1,ON);
           setLED_State(BOT1,ON);break;
         case ALL_OFF:
-          setLED_State(TOP1,OFF);
+          setMidArrow(MID1,OFF);
           setLED_State(MID1,OFF);
+          setLED_State(TOP1,OFF);
           setLED_State(BOT1,OFF);break;
         case TOP_ON:
           setLED_State(TOP1,ON);break;
@@ -189,14 +191,19 @@ void LED_FSM(void)
           setLED_State(BOT1,ON);break;
         case BOT_OFF:
           setLED_State(BOT1,OFF);break;
+        case ARROW_ON:
+          setLED_State(BOT1,ON);
+          setMidArrow(MID1,ON);break;
       }
     }else if((data&1)==NO2){
       switch (data&0xFE) {
         case ALL_ON:
+          setMidArrow(MID2,OFF);
           setLED_State(TOP2,ON);
           setLED_State(MID2,ON);
           setLED_State(BOT2,ON);break;
         case ALL_OFF:
+          setMidArrow(MID2,OFF);
           setLED_State(TOP2,OFF);
           setLED_State(MID2,OFF);
           setLED_State(BOT2,OFF);break;
@@ -216,7 +223,16 @@ void LED_FSM(void)
           setLED_State(BOT2,ON);break;
         case BOT_OFF:
           setLED_State(BOT2,OFF);break;
+        case ARROW_ON:
+          setLED_State(BOT2,ON);
+          setMidArrow(MID2,ON);break;
       }
     }
   }
+}
+
+void test(void)
+{
+  HAL_TIM_PWM_Start_DMA(&TIM_MID1,CHANNEL_MID1,(uint32_t*)mid1_LED,24);
+  LED_State.mid1 = MID_SIZE;
 }

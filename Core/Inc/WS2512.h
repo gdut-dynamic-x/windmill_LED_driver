@@ -28,6 +28,7 @@
 #define MID_ON 0x0C
 #define MID_OFF 0x0E
 #define MID_ARROW 0x10
+#define ARROW_ON 0x12
 
 #define DMA_TOP1 hdma_tim1_ch1
 #define DMA_TOP2 hdma_tim1_ch4_trig_com
@@ -64,8 +65,8 @@
 #define MID1 5
 #define MID2 6
 
-#define TOP_SIZE 30
-#define BOT_SIZE 30
+#define TOP_SIZE 52
+#define BOT_SIZE 47
 #define MID_SIZE 256
 
 #define OFF 0
@@ -94,5 +95,7 @@ uint8_t setLED(uint8_t LED_type,uint8_t state);
 void transferToLED(const uint8_t *data,uint16_t length,uint8_t* dstData);
 
 void LED_FSM(void);
+
+void test(void);
 
 #endif //BOARD_B_CORE_INC_WS2512_H_

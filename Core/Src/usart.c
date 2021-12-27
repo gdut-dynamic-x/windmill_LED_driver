@@ -22,13 +22,30 @@
 
 /* USER CODE BEGIN 0 */
 #include "queue.h"
-static uint8_t rx_data;
+#include "WS2512.h"
+uint8_t rx_data;
 extern QueueHandle_t data_queue;
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
-  addQueue(data_queue,&rx_data);
-  HAL_UART_Receive_IT(&huart1,&rx_data,1);
+  if(huart->Instance == USART1)
+  {
+    static uint8_t switch_mode = 0;
+    switch (switch_mode) {
+      case 0:
+        if(rx_data == 0xAA) switch_mode = 1;
+        break;
+      case 1:
+        addQueue(data_queue,&rx_data);
+        switch_mode = 0;
+        break;
+      default:break;
+    }
+//    if(rx_data == 0xAA)
+//      addQueue(data_queue,&rx_data);
+    HAL_UART_Receive_IT(&huart1,&rx_data,1);
+  }
+
 }
 /* USER CODE END 0 */
 
